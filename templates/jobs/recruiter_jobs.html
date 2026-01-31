@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}My Jobs{% endblock %}
+
+{% block content %}
+<h2>AARAMBIX | My Job Posts</h2>
+
+<a href="{% url 'jobs:create_job' %}">Post New Job</a>
+
+{% for job in jobs %}
+<div class="card">
+    <p><b>{{ job.title }}</b></p>
+    <p>Status: {{ job.is_open|yesno:"Open,Closed" }}</p>
+    <a href="{% url 'jobs:edit_job' job.id %}">Edit</a>
+</div>
+{% empty %}
+<p>No jobs posted.</p>
+{% endfor %}
+{% endblock %}

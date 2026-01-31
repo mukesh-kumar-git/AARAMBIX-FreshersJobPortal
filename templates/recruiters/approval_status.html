@@ -1,0 +1,14 @@
+<h2>Recruiter Approval Status</h2>
+
+{% if profile %}
+    {% if profile.is_approved %}
+        <p style="color:green;">Approved ✔</p>
+        <a href="{% url 'recruiters:dashboard' %}">Go to Dashboard</a>
+    {% elif profile.rejected %}
+        <p style="color:red;">Rejected ❌</p>
+    {% else %}
+        <p>Pending Admin Approval ⏳</p>
+    {% endif %}
+{% else %}
+    <p>Profile not created.</p>
+{% endif %}

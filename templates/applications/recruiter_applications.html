@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Applicants{% endblock %}
+
+{% block content %}
+<h2>AARAMBIX | Applicants for {{ job.title }}</h2>
+
+{% for app in applications %}
+<div class="card">
+    <p>{{ app.fresher.username }}</p>
+
+    <form method="POST" action="{% url 'applications:update_status' app.id %}">
+        {% csrf_token %}
+        <select name="status">
+            <option value="applied" {% if app.status == 'applied' %}selected{% endif %}>Applied</option>
+            <option value="shortlisted" {% if app.status == 'shortlisted' %}selected{% endif %}>Shortlisted</option>
+            <option value="rejected" {% if app.status == 'rejected' %}selected{% endif %}>Rejected</option>
+        </select>
+        <button type="submit">Update</button>
+    </form>
+</div>
+{% empty %}
+<p>No applicants.</p>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manage Recruiters</title>
+    <link rel="stylesheet" href="{% static 'css/admin.css' %}">
+</head>
+<body>
+
+{% include "admin_panel/navbar.html" %}
+
+<div class="admin-container">
+    <h2>Recruiter Approvals</h2>
+
+    <table class="table">
+        <tr>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Approved</th>
+            <th>Action</th>
+        </tr>
+
+        {% for profile in recruiters %}
+        <tr>
+            <td>{{ profile.user.username }}</td>
+            <td>{{ profile.user.email }}</td>
+            <td>{{ profile.is_approved }}</td>
+            <td>
+                {% if not profile.is_approved %}
+                    <a href="{% url 'admin_panel:approve_recruiter' profile.id %}" class="btn approve">
+                        Approve
+                    </a>
+                {% else %}
+                    ✔ Approved
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+</body>
+</html>

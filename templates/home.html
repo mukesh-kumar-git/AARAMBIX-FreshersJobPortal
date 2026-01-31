@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+    <h1>Your Career Starts Here</h1>
+    <p>
+        A dedicated job portal designed exclusively for freshers.
+        Explore verified jobs, apply easily, and kickstart your professional journey.
+    </p>
+
+    <div class="hero-buttons">
+        <a href="/accounts/signup/" class="btn primary">Get Started</a>
+        <a href="/accounts/login/" class="btn secondary">Login</a>
+    </div>
+</section>
+
+<section class="about">
+    <h2>About Fresher Job Portal</h2>
+    <p>
+        Fresher Job Portal is built to bridge the gap between fresh graduates and recruiters.
+        We focus only on entry-level and fresher-friendly jobs to ensure a fair opportunity
+        for every candidate.
+    </p>
+
+    <div class="features">
+        <div class="feature-card">
+            <h3>👩‍🎓 For Freshers</h3>
+            <p>Create a profile, upload your resume, and apply to verified fresher jobs.</p>
+        </div>
+
+        <div class="feature-card">
+            <h3>🏢 For Recruiters</h3>
+            <p>Post job openings and connect with talented fresh graduates.</p>
+        </div>
+
+        <div class="feature-card">
+            <h3>🛡️ Admin Control</h3>
+            <p>Admins verify recruiters, approve jobs, and ensure platform safety.</p>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <p>© 2026 Fresher Job Portal. All rights reserved.</p>
+</footer>
+
+{% endblock %}

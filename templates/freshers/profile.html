@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Fresher Profile{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>AARAMBIX | Fresher Profile</h2>
+
+    <form method="POST" class="form-box">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit" class="btn primary">
+            Save Profile
+        </button>
+
+        <a href="{% url 'freshers:dashboard' %}" class="btn secondary">
+            Back to Dashboard
+        </a>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,146 @@
+/* ================= GLOBAL ================= */
+body {
+    background: linear-gradient(135deg, #0f172a, #020617);
+    font-family: "Segoe UI", Arial, sans-serif;
+    margin: 0;
+    color: #e5e7eb;
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+    background: #020617;
+    padding: 16px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+}
+
+.navbar a {
+    color: #5eead4;
+    margin-left: 24px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+    color: #2dd4bf;
+}
+
+/* ================= CONTAINER ================= */
+.admin-container {
+    padding: 40px;
+}
+
+/* ================= HEADINGS ================= */
+h1, h2 {
+    color: #5eead4;
+    margin-bottom: 25px;
+    letter-spacing: 0.5px;
+}
+
+/* ================= STATS ================= */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+    margin-bottom: 45px;
+}
+
+.stat-card {
+    background: rgba(15, 23, 42, 0.95);
+    padding: 28px 20px;
+    border-radius: 14px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+    text-align: center;
+    border: 1px solid rgba(94, 234, 212, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.8);
+}
+
+.stat-card h3 {
+    font-size: 34px;
+    color: #2dd4bf;
+    margin-bottom: 6px;
+}
+
+.stat-card p {
+    margin-top: 6px;
+    font-weight: 600;
+    color: #cbd5f5;
+}
+
+/* ================= TABLE ================= */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(15, 23, 42, 0.95);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+}
+
+.table th,
+.table td {
+    padding: 14px 16px;
+    text-align: left;
+}
+
+.table th {
+    background: #020617;
+    color: #5eead4;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+}
+
+.table tr {
+    border-bottom: 1px solid rgba(94, 234, 212, 0.08);
+}
+
+.table tr:nth-child(even) {
+    background-color: rgba(2, 6, 23, 0.6);
+}
+
+.table tr:hover {
+    background-color: rgba(45, 212, 191, 0.08);
+}
+
+/* ================= BUTTONS ================= */
+.btn {
+    padding: 8px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    display: inline-block;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
+}
+
+/* Approve */
+.btn.approve {
+    background: linear-gradient(135deg, #2dd4bf, #14b8a6);
+    color: #020617;
+}
+
+/* Reject */
+.btn.reject {
+    background: linear-gradient(135deg, #ef4444, #b91c1c);
+    color: #fff;
+}
+
+/* Toggle */
+.btn.toggle {
+    background: linear-gradient(135deg, #0d9488, #2dd4bf);
+    color: #020617;
+}

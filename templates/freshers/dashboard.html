@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fresher Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/fresher_dashboard.css' %}">
+</head>
+<body>
+
+<nav class="navbar">
+    <h2>FresherJobPortal</h2>
+    <div>
+        <a href="/">Home</a>
+        <a href="/accounts/logout/">Logout</a>
+    </div>
+</nav>
+
+<section class="dashboard-header">
+    <h1>Welcome, {{ request.user.username }}</h1>
+    <p>Build your profile and apply for fresher jobs</p>
+</section>
+
+<section class="actions">
+    <a href="{% url 'freshers:profile' %}" class="btn">Create / Update Profile</a>
+    <a href="{% url 'freshers:upload_resume' %}" class="btn secondary">Upload Resume</a>
+    <a href="{% url 'freshers:applied_jobs' %}" class="btn dark">View Applied Jobs</a>
+</section>
+
+<section class="search-section">
+    <form method="get">
+        <input type="text" name="q" placeholder="Search jobs..." value="{{ request.GET.q }}">
+        <button type="submit">Search</button>
+    </form>
+</section>
+
+<section class="jobs">
+    <h2>Available Jobs</h2>
+
+    {% for job in jobs %}
+    <div class="job-card">
+        <h3>{{ job.title }}</h3>
+        <p><b>Company:</b> {{ job.company_name }}</p>
+        <p><b>Location:</b> {{ job.location }}</p>
+        <p><b>Skills:</b> {{ job.skills_required }}</p>
+
+<a href="{% url 'applications:apply_job' job.id %}" class="apply-btn">
+    Apply Now
+</a>
+
+    </div>
+    {% empty %}
+        <p>No jobs found</p>
+    {% endfor %}
+</section>
+
+</body>
+</html>

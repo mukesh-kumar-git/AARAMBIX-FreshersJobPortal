@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Applications for {{ job.title }}</h2>
+
+<div class="applications-grid">
+{% for app in applications %}
+    <div class="card">
+        <p><strong>Candidate:</strong> {{ app.fresher.username }}</p>
+        <p><strong>Status:</strong> {{ app.status }}</p>
+
+        {% if app.resume %}
+            <p>
+                <a href="{{ app.resume.url }}" target="_blank">📄 View Resume</a> |
+                <a href="{{ app.resume.url }}" download>⬇️ Download</a>
+            </p>
+        {% endif %}
+
+        <div class="actions">
+            <a href="{% url 'recruiters:update_application_status' app.id 'shortlisted' %}">Shortlist</a>
+            <a href="{% url 'recruiters:update_application_status' app.id 'rejected' %}">Reject</a>
+            <a href="{% url 'recruiters:update_application_status' app.id 'hired' %}">Hire</a>
+        </div>
+    </div>
+{% empty %}
+    <p>No applications yet.</p>
+{% endfor %}
+</div>
+
+{% endblock %}

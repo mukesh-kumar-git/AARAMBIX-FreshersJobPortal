@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Post Job{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Post a New Job</h2>
+
+    <form method="post" class="form-box">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit" class="btn primary">
+            Post Job
+        </button>
+
+        <a href="{% url 'recruiters:dashboard' %}" class="btn secondary">
+            Back to Dashboard
+        </a>
+    </form>
+</div>
+{% endblock %}

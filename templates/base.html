@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AARAMBIX | Fresher Job Portal</title>
+
+    <!-- GLOBAL CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <!-- PAGE-SPECIFIC CSS -->
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+<header class="navbar">
+    <div class="logo">
+        <span>AARAMBIX</span>
+    </div>
+
+    <nav class="nav-links">
+        {% if user.is_authenticated %}
+            <span class="welcome-text">
+                Hi, {{ user.username }}
+            </span>
+
+            <a href="{% url 'accounts:logout' %}">Logout</a>
+
+        {% else %}
+            <a href="{% url 'accounts:signup' %}">Signup</a>
+            <a href="{% url 'accounts:login' %}">Login</a>
+
+            <!-- ADMIN LOGIN BUTTON -->
+            <a href="/accounts/admin-login/" class="admin-btn">Admin</a>
+        {% endif %}
+    </nav>
+</header>
+
+<main class="container">
+    {% block content %}{% endblock %}
+</main>
+
+</body>
+</html>

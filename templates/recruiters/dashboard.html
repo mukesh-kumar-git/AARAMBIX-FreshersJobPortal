@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Recruiter Dashboard</h2>
+
+<a href="{% url 'recruiters:company_profile' %}" class="btn">
+    {% if company %}
+        Edit Company Profile
+    {% else %}
+        Add Company Profile
+    {% endif %}
+</a>
+
+<!-- FIXED HERE -->
+<a href="{% url 'jobs:create_job' %}" class="btn">
+    ➕ Post Job
+</a>
+
+{% for job in jobs %}
+    <div class="card">
+        <h3>{{ job.title }}</h3>
+        <p>Total Applications: {{ job.total_applications }}</p>
+
+        <a href="{% url 'recruiters:job_applications' job.id %}">
+            View Applications
+        </a>
+    </div>
+{% empty %}
+    <p>No jobs posted yet.</p>
+{% endfor %}
+
+{% endblock %}

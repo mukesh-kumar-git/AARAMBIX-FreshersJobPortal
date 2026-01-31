@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Upload Resume{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>AARAMBIX | Resume Upload</h2>
+
+    <p class="hint">
+        Upload your resume in <strong>PDF format only</strong>.
+    </p>
+
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+
+    <form method="POST" enctype="multipart/form-data" class="form-box">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit" class="btn primary">
+            Upload Resume
+        </button>
+
+        <a href="{% url 'freshers:dashboard' %}" class="btn secondary">
+            Back to Dashboard
+        </a>
+    </form>
+</div>
+{% endblock %}
